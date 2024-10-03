@@ -1,0 +1,24 @@
+---
+- name: Add port-forwarding
+  hosts: for-ansible
+
+  tasks:
+  - name: Add port-forwarding
+    ansible.posix.firewalld:
+      port_forward: 
+      - port: 51111
+        proto: tcp
+        toport: 22
+      permanent: true
+      state: enabled
+  
+  - name: Remove ssh-service
+    ansible.posix.firewalld:
+      service: ssh
+      permanent: true
+      state: disabled
+
+  - name: Firewalld reload
+    ansible.builtin.service:
+      name: firewalld
+      state: reloaded

@@ -1,0 +1,10 @@
+---
+for-ansible:
+  hosts:
+    for-ansible-NL:
+      ansible_host: some-ip
+    for-ansible-UAE:
+      ansible_host: some-ip
+  vars:
+    ansible_user: root
+    ansible_port: 51111
